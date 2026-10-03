@@ -152,7 +152,7 @@ function AjustesApariencia() {
             onClick={ajustes.achicarLetra}
             disabled={!ajustes.puedeAchicar}
             aria-label="Letra más pequeña"
-            className="size-14 shrink-0 px-0! text-lg"
+            className="size-14 shrink-0 px-0! text-lg!"
           >
             A−
           </Boton>
@@ -162,7 +162,7 @@ function AjustesApariencia() {
             onClick={ajustes.agrandarLetra}
             disabled={!ajustes.puedeAgrandar}
             aria-label="Letra más grande"
-            className="size-14 shrink-0 px-0! text-2xl"
+            className="size-14 shrink-0 px-0! text-2xl!"
           >
             A+
           </Boton>
