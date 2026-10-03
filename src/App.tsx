@@ -1,5 +1,8 @@
 import { createBrowserRouter, RouterProvider } from 'react-router'
 import { ProveedorAjustes } from '@/hooks/useAjustes'
+import { ProveedorSesion } from '@/hooks/useSesion'
+import { PaginaRecuperar } from '@/pages/PaginaRecuperar'
+import { PaginaRestablecer } from '@/pages/PaginaRestablecer'
 import { RutaProtegida } from '@/components/RutaProtegida'
 import { DisenoPrincipal } from '@/components/DisenoPrincipal'
 import { PaginaAcceso } from '@/pages/PaginaAcceso'
@@ -13,6 +16,8 @@ import { PaginaNoEncontrada } from '@/pages/PaginaNoEncontrada'
 /**
  * Mapa de rutas de la app:
  *   /acceso                    → inicio de sesión / registro (pública)
+ *   /recuperar                 → pedir enlace para cambiar la contraseña (pública)
+ *   /restablecer               → elegir contraseña nueva (desde el enlace del correo o el perfil)
  *   /                          → lista de proyectos
  *   /proyectos/nuevo           → crear proyecto
  *   /proyectos/:id             → detalle del proyecto
@@ -22,6 +27,8 @@ import { PaginaNoEncontrada } from '@/pages/PaginaNoEncontrada'
  */
 const enrutador = createBrowserRouter([
   { path: '/acceso', element: <PaginaAcceso /> },
+  { path: '/recuperar', element: <PaginaRecuperar /> },
+  { path: '/restablecer', element: <PaginaRestablecer /> },
   {
     element: <RutaProtegida />,
     children: [
@@ -46,7 +53,9 @@ const enrutador = createBrowserRouter([
 export function App() {
   return (
     <ProveedorAjustes>
-      <RouterProvider router={enrutador} />
+      <ProveedorSesion>
+        <RouterProvider router={enrutador} />
+      </ProveedorSesion>
     </ProveedorAjustes>
   )
 }

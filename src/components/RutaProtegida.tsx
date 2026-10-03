@@ -1,10 +1,17 @@
-import { Outlet } from 'react-router'
+import { Navigate, Outlet, useLocation } from 'react-router'
+import { useSesion } from '@/hooks/useSesion'
+import { PantallaCarga } from './PantallaCarga'
 
 /**
  * Envuelve las rutas que requieren sesión iniciada.
- * FASE 1: deja pasar siempre.
- * FASE 2: comprobará la sesión de Supabase y redirigirá a /acceso si no hay.
+ * Si no hay sesión, manda a /acceso recordando a qué pantalla se quería ir.
+ * Sin conexión funciona igual: usa la sesión guardada en el teléfono.
  */
 export function RutaProtegida() {
+  const { usuario, cargando } = useSesion()
+  const ubicacion = useLocation()
+
+  if (cargando) return <PantallaCarga />
+  if (!usuario) return <Navigate to="/acceso" replace state={{ desde: ubicacion.pathname }} />
   return <Outlet />
 }

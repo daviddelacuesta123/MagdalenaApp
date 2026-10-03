@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(npm run build 2>&1)",
+      "PowerShell(node \"C:\\\\Users\\\\david\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\c--Users-david-Desktop-MagdalenaApp\\\\46544253-deeb-4552-93e9-f7791f3b60c1\\\\scratchpad\\\\prueba-seguridad.mjs\" 2>&1)"
+    ]
+  }
+}
