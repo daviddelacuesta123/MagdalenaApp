@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- Ícono provisional: ovillo de lana con punta de hilo -->
+  <circle cx="30" cy="30" r="24" fill="#A8555E"/>
+  <g fill="none" stroke="#FBF6F0" stroke-width="3" stroke-linecap="round">
+    <path d="M14 12 46 44"/>
+    <path d="M8 24l28 28"/>
+    <path d="M24 7l29 29"/>
+    <path d="M18 50 44 14"/>
+  </g>
+  <path d="M52 38c2 8 4 14 9 20" fill="none" stroke="#A8555E" stroke-width="3.5" stroke-linecap="round"/>
+</svg>

@@ -1,0 +1,92 @@
+@import 'tailwindcss';
+
+/* El modo oscuro se activa con la clase "dark" en <html> (la pone src/lib/ajustes.ts) */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/*
+  Paleta de la app (tonos cálidos: crema, rosa viejo y terracota).
+  Los colores se definen como variables CSS para que cambien solos en modo oscuro.
+  Uso en Tailwind: bg-fondo, bg-superficie, text-texto, text-suave, bg-primario, etc.
+*/
+:root {
+  --fondo: #fbf6f0;
+  --superficie: #ffffff;
+  --superficie-2: #f4eae0;
+  --borde: #e8d9cc;
+  --texto: #3b2a26;
+  --suave: #7a6560;
+  --primario: #a8555e;
+  --primario-hover: #93464f;
+  --sobre-primario: #ffffff;
+  --acento: #b35a30;
+  --sobre-acento: #ffffff;
+  --peligro: #b3261e;
+  color-scheme: light;
+}
+
+.dark {
+  --fondo: #1e1715;
+  --superficie: #2a211e;
+  --superficie-2: #352a26;
+  --borde: #45362f;
+  --texto: #f5ebe3;
+  --suave: #bba89f;
+  --primario: #e29aa2;
+  --primario-hover: #eab0b6;
+  --sobre-primario: #2a1518;
+  --acento: #e8956b;
+  --sobre-acento: #2a1408;
+  --peligro: #f2b8b5;
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-fondo: var(--fondo);
+  --color-superficie: var(--superficie);
+  --color-superficie-2: var(--superficie-2);
+  --color-borde: var(--borde);
+  --color-texto: var(--texto);
+  --color-suave: var(--suave);
+  --color-primario: var(--primario);
+  --color-primario-hover: var(--primario-hover);
+  --color-sobre-primario: var(--sobre-primario);
+  --color-acento: var(--acento);
+  --color-sobre-acento: var(--sobre-acento);
+  --color-peligro: var(--peligro);
+}
+
+@layer base {
+  html {
+    /* Evita que iOS agrande el texto solo al girar el teléfono */
+    -webkit-text-size-adjust: 100%;
+    /* Quita el recuadro gris al tocar en Android/iOS */
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    @apply bg-fondo text-texto antialiased;
+    font-family: ui-rounded, 'SF Pro Rounded', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    min-height: 100dvh;
+  }
+
+  /* Evita el zoom por doble toque en botones (importante al tocar rápido el contador) */
+  button,
+  a,
+  [role='button'] {
+    touch-action: manipulation;
+  }
+
+  /* Contorno visible al navegar con teclado */
+  :focus-visible {
+    outline: 3px solid var(--primario);
+    outline-offset: 2px;
+  }
+}
+
+/* Utilidades para respetar las zonas seguras del iPhone (notch y barra inferior) */
+@utility pt-seguro {
+  padding-top: max(0.75rem, env(safe-area-inset-top));
+}
+@utility pb-seguro {
+  padding-bottom: max(0.75rem, env(safe-area-inset-bottom));
+}
